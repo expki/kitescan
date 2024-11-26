@@ -62,7 +62,7 @@ export default function LoginTabLayout() {
         name="signup"
         options={{
           title: 'Sign-Up',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="newspaper.fill" color={color} />,
         }}
       />
     </Tabs>

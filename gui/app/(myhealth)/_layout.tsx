@@ -54,21 +54,21 @@ export default function MyHealthTabLayout() {
         name="actions"
         options={{
           title: 'Actions',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="smartphone" color={color} />,
         }}
       />
       <Tabs.Screen
         name="appointments"
         options={{
           title: 'Appointments',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="figure.snowboarding" color={color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="bird.circle.fill" color={color} />,
         }}
       />
     </Tabs>
