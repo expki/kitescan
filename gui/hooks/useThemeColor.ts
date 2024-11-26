@@ -5,9 +5,10 @@
 
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import type { ColorSchemeName } from 'react-native';
 
 export function useThemeColor(
-  props: { light?: string; dark?: string },
+  props: { light?: ColorSchemeName; dark?: ColorSchemeName },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
   const theme = useColorScheme() ?? 'light';
@@ -17,5 +18,18 @@ export function useThemeColor(
     return colorFromProps;
   } else {
     return Colors[theme][colorName];
+  }
+}
+
+export function invertColorScheme(color: ColorSchemeName): ColorSchemeName {
+  switch (color) {
+    case 'dark':
+      return 'light';
+    case 'light':
+      return 'dark';
+    case undefined:
+      return undefined;
+    case null:
+      return null;
   }
 }
