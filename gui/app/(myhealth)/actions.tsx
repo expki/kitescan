@@ -1,57 +1,69 @@
-import { useState, useEffect } from 'react';
-import { Image, StyleSheet, Platform } from 'react-native';
-import { router } from 'expo-router';
+import { StyleSheet, Image, Platform, View } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
+import { Collapsible } from '@/components/Collapsible';
+import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
+import { ThemedTextInput } from '@/components/ThemedTextInput';
 import { ThemedView } from '@/components/ThemedView';
+import { ThemedButton } from '@/components/ThemedButton';
+import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function ActionsScreen() {
+  const isDark = useColorScheme() == 'dark';
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require('@/assets/images/partial-kitscan-logo.png')}
           style={styles.reactLogo}
         />
-      }>
+    }>      
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Actions!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">Actions</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+      <View style={styles.center}>
+        <View style={[
+          styles.stepContainer,
+          {borderWidth: 2, borderRadius: 5, padding: 5, width: "100%"},
+          isDark ? { borderColor: 'white' } : undefined,
+          !isDark ? { borderColor: 'black' } : undefined,
+        ]}>
+          <View style={[
+            styles.block,
+            isDark ? { borderColor: 'white' } : undefined,
+            !isDark ? { borderColor: 'black' } : undefined,
+          ]}>
+            <ThemedText style={styles.appointment}>Action item 1</ThemedText>
+            <ThemedButton text='Do thing 1' onPress={()=>{}} />
+          </View>
+          <View style={[
+            styles.block,
+            isDark ? { borderColor: 'white' } : undefined,
+            !isDark ? { borderColor: 'black' } : undefined,
+          ]}>
+            <ThemedText style={styles.appointment}>Action item 2</ThemedText>
+            <ThemedButton text='Do thing 2' onPress={()=>{}} />
+          </View>
+          <View style={[
+            styles.block,
+            isDark ? { borderColor: 'white' } : undefined,
+            !isDark ? { borderColor: 'black' } : undefined,
+          ]}>
+            <ThemedText style={styles.appointment}>Action item 3</ThemedText>
+            <ThemedButton text='Do thing 3' onPress={()=>{}} />
+          </View>
+          <View style={[
+            styles.block,
+            isDark ? { borderColor: 'white' } : undefined,
+            !isDark ? { borderColor: 'black' } : undefined,
+          ]}>
+            <ThemedText style={styles.appointment}>Action item 4</ThemedText>
+            <ThemedButton text='Do thing 4' onPress={()=>{}} />
+          </View>
+        </View>
+      </View>
     </ParallaxScrollView>
   );
 }
@@ -64,7 +76,15 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     gap: 8,
-    marginBottom: 8,
+    margin: 8,
+    width: '100%',
+    maxWidth: 1000,
+  },
+  block: {
+    padding: 5,
+    borderWidth: 2,
+    borderRadius: 5,
+    gap: 5,
   },
   reactLogo: {
     height: 178,
@@ -72,5 +92,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  appointment: {
+    width: '100%',
   },
 });
